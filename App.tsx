@@ -8,7 +8,8 @@ import {
   Image,
   TouchableOpacity,
   ToastAndroid,
-  ScrollView
+  ScrollView,
+  ActivityIndicator
 } from 'react-native';
 import * as ImagePicker from 'react-native-image-picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -25,6 +26,7 @@ function App(): React.ReactElement {
   const [photo, setPhoto] = useState<Photo | null>(null);
   const [caption, setCaption] = useState<string | null>(null);
   const [credits, setCredits] = useState<number>(3);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const getStoredCredits = async () => {
@@ -51,6 +53,7 @@ function App(): React.ReactElement {
       return;
     } 
 
+    setLoading(true);
     try {
       const imageUrl = `data:image/jpeg;base64,${photo?.assets?.[0]?.base64}`;
 
@@ -93,8 +96,11 @@ function App(): React.ReactElement {
       setCaption(genCaption);
       setCredits(credits - 1);
       await AsyncStorage.setItem('credits', String(credits - 1));
+      setLoading(false)
     } catch (error) {
       console.error('Error in Caption generation:', error);
+      ToastAndroid.show('Error in Caption generation !', ToastAndroid.SHORT);
+      setLoading(false)
     }
   }
 
@@ -118,15 +124,15 @@ function App(): React.ReactElement {
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor="#2e307d" />
       <ScrollView>
-
+      {/* Heading */}
       <View>
         <Text style={{ textAlign: 'center', fontSize: 36, fontWeight: '800', color: 'white' }}>
           AI Image caption generator
         </Text>
       </View>
 
+     {/* Image Upload & View */}
       {photo ? (
-        
         <>
           <Image
             source={{ uri: photo.assets?.[0]?.uri }}
@@ -135,6 +141,7 @@ function App(): React.ReactElement {
           <TouchableOpacity
             onPress={() => {setPhoto(null)
                             setCaption("")}}
+            disabled={loading}
             style={{ backgroundColor: 'white', width: 180, alignSelf: 'center', borderRadius: 3, paddingVertical: 4 }}
           >
             <Text style={{ textAlign: 'center', fontSize: 18, fontWeight: '700', color: '#2e307d' }}>Remove</Text>
@@ -144,23 +151,27 @@ function App(): React.ReactElement {
       <Uploader pickImage={pickImage}  />
       }
 
-
+      {/* Caption */}
       <Text style={{ textAlign: 'center', fontSize: 18, fontWeight: '400', color: '#f9f8f7', marginTop: 24 }}>
-        {caption ? caption : "\"Your caption will appear here\""}
+        {caption ? `"${caption}"` : "\"Your caption will appear here\""}
       </Text>
 
+      {/* Credits */}
       <Text style={{ textAlign: 'center', fontSize: 18, fontWeight: '400', color: 'white', marginTop: 24, textDecorationLine:"underline" }}>
         Credits : {credits}
       </Text>
+
+      {/* Generate Caption button*/}
       <TouchableOpacity
-        disabled={!photo}
+        disabled={loading}
         onPress={generateCaption}
         style={{ backgroundColor: '#fd890e', borderRadius: 4, width: 250, alignSelf: 'center', marginTop: 24 }}
       >
         <Text style={{ textAlign: 'center', fontSize: 20, fontWeight: '600', color: 'white', paddingVertical: 10 }}>
-          Generate Caption
+          {loading ? <ActivityIndicator size="small" color="#fff" />:"Generate Caption"} 
         </Text>
       </TouchableOpacity>
+
       </ScrollView>
     </SafeAreaView>
   );
