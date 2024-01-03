@@ -7,7 +7,8 @@ import {
   View,
   Image,
   TouchableOpacity,
-  ToastAndroid
+  ToastAndroid,
+  ScrollView
 } from 'react-native';
 import * as ImagePicker from 'react-native-image-picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -40,7 +41,10 @@ function App(): React.ReactElement {
 
 
   const generateCaption = async () => {
-    if(!photo) return;
+    if(!photo){
+      ToastAndroid.show('Please upload an image !', ToastAndroid.SHORT);
+      return;
+    } 
 
     if(credits <= 0){
       ToastAndroid.show('You have exhausted your credits !', ToastAndroid.SHORT);
@@ -113,6 +117,7 @@ function App(): React.ReactElement {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor="#2e307d" />
+      <ScrollView>
 
       <View>
         <Text style={{ textAlign: 'center', fontSize: 36, fontWeight: '800', color: 'white' }}>
@@ -156,6 +161,7 @@ function App(): React.ReactElement {
           Generate Caption
         </Text>
       </TouchableOpacity>
+      </ScrollView>
     </SafeAreaView>
   );
 }
