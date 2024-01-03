@@ -1,6 +1,10 @@
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-# Getting Started
+# AI Image generation mobile app
+![Screenshot_1704281693](https://github.com/iamdpunkr1/AI_Caption_gen/assets/65856604/563a5a94-ab72-43f3-86be-f35555768594)
+![Screenshot_1704281650](https://github.com/iamdpunkr1/AI_Caption_gen/assets/65856604/e254979c-a301-41a6-9293-03814857d53e)
+
+
 
 >**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
