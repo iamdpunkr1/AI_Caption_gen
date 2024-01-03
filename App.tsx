@@ -7,9 +7,11 @@ import {
   View,
   Image,
   TouchableOpacity,
+  ToastAndroid
 } from 'react-native';
 import * as ImagePicker from 'react-native-image-picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Uploader from './components/Uploader';
 
 
 
@@ -40,7 +42,10 @@ function App(): React.ReactElement {
   const generateCaption = async () => {
     if(!photo) return;
 
-    if(credits <= 0) return;
+    if(credits <= 0){
+      ToastAndroid.show('You have exhausted your credits !', ToastAndroid.SHORT);
+      return;
+    } 
 
     try {
       const imageUrl = `data:image/jpeg;base64,${photo?.assets?.[0]?.base64}`;
@@ -116,6 +121,7 @@ function App(): React.ReactElement {
       </View>
 
       {photo ? (
+        
         <>
           <Image
             source={{ uri: photo.assets?.[0]?.uri }}
@@ -129,33 +135,13 @@ function App(): React.ReactElement {
             <Text style={{ textAlign: 'center', fontSize: 18, fontWeight: '700', color: '#2e307d' }}>Remove</Text>
           </TouchableOpacity>
         </>
-      ) : (
-        <TouchableOpacity
-          style={{
-            marginTop: 40,
-            height: 200,
-            width: 200,
-            borderRadius: 3,
-            borderWidth: 3,
-            borderStyle: 'dashed',
-            borderColor: 'white',
-            flex: 0,
-            justifyContent: 'center',
-            alignItems: 'center',
-            paddingVertical: 20,
-            backgroundColor: '#484bb0',
-            alignSelf: 'center',
-          }}
-          onPress={pickImage}
-        >
-          <Text style={{ textAlign: 'center', fontSize: 48, fontWeight: '400', color: 'white' }}>+</Text>
-          <Text style={{ textAlign: 'center', fontSize: 18, fontWeight: '600', color: 'white' }}>Upload Image</Text>
-        </TouchableOpacity>
-      )}
+      ) : 
+      <Uploader pickImage={pickImage}  />
+      }
 
 
       <Text style={{ textAlign: 'center', fontSize: 18, fontWeight: '400', color: '#f9f8f7', marginTop: 24 }}>
-        {caption ? caption : 'Your caption will appear here'}
+        {caption ? caption : "\"Your caption will appear here\""}
       </Text>
 
       <Text style={{ textAlign: 'center', fontSize: 18, fontWeight: '400', color: 'white', marginTop: 24, textDecorationLine:"underline" }}>
