@@ -1,12 +1,18 @@
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-# AI Image generation mobile app
-![Screenshot_1704281693](https://github.com/iamdpunkr1/AI_Caption_gen/assets/65856604/563a5a94-ab72-43f3-86be-f35555768594)
-![Screenshot_1704281650](https://github.com/iamdpunkr1/AI_Caption_gen/assets/65856604/e254979c-a301-41a6-9293-03814857d53e)
+# AI Image Generation Mobile App
 
+This is a React Native project for an AI-powered image caption generation mobile app.
 
+![Screenshot_1704281693](https://github.com/iamdpunkr1/AI_Caption_gen/assets/65856604/563a5a94-ab72-43f3-86be-f35555768594){:height="50%" width="50%"}
+![Screenshot_1704281650](https://github.com/iamdpunkr1/AI_Caption_gen/assets/65856604/e254979c-a301-41a6-9293-03814857d53e){:height="50%" width="50%"}
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+> **Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till the "Creating a new application" step before proceeding.
+
+## App Description
+
+This React Native app allows users to upload images and generate captions using the OpenAI Vision API. It comes with an initial credit system, and users can manage their credits for caption generation.
+
 
 ## Step 1: Start the Metro Server
 
