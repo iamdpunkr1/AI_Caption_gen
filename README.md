@@ -4,8 +4,10 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 
 This is a React Native project for an AI-powered image caption generation mobile app.
 
-![Screenshot_1704281693](https://github.com/iamdpunkr1/AI_Caption_gen/assets/65856604/563a5a94-ab72-43f3-86be-f35555768594){:height="50%" width="50%"}
-![Screenshot_1704281650](https://github.com/iamdpunkr1/AI_Caption_gen/assets/65856604/e254979c-a301-41a6-9293-03814857d53e){:height="50%" width="50%"}
+<div align="center">
+  <img src="https://github.com/iamdpunkr1/AI_Caption_gen/assets/65856604/563a5a94-ab72-43f3-86be-f35555768594" width="200" alt="ss1">
+  <img src="https://github.com/iamdpunkr1/AI_Caption_gen/assets/65856604/e254979c-a301-41a6-9293-03814857d53e" width="200" alt="ss2">
+</div>
 
 > **Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till the "Creating a new application" step before proceeding.
 
