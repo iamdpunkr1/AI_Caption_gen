@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.21.0",
+    "axios": "^1.6.3",
     "openai": "^4.24.1",
     "react": "18.2.0",
     "react-native": "0.73.1",
+    "react-native-dotenv": "^3.4.9",
     "react-native-image-picker": "^7.1.0"
   },
   "devDependencies": {
